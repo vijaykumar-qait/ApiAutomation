@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Parallel Automation" parallel="methods" verbose="1">
+    <listeners>
+        <listener class-name="Utilities.InfluxDBListener"></listener>
+        <listener class-name="Utilities.RetryListener"></listener>
+    </listeners>
+    <test verbose="0" name="Test1">
+        <!-- add package to run -->
+        <classes>
+            <class name="test.TestCreateBookingApi"></class>
+        </classes>
+    </test>
+</suite>
