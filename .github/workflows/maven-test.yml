@@ -1,0 +1,21 @@
+name: Maven Test
+
+on:
+    push:
+        branches: [ master ]
+    pull_request:
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t maven-test .
+
+    - name: Run test with Docker
+      run: docker run maven-test mvn clean test
