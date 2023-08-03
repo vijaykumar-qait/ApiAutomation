@@ -13,10 +13,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Set up JDK 8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 8
 
-    - name: Build with Maven
-      run: mvn clean install
+    - name: Build Docker image
+      run: docker build -t maven-test .
+
+    - name: Run test with Docker
+      run: docker run maven-test
